@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :tickets
+
   root :to => 'application#home', :as => :home
 
 
