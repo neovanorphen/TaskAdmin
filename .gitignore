@@ -14,3 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+*.xml
+.idea/dataSources.ids
+*.xml
+.idea/workspace.xml

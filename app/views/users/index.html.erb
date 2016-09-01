@@ -27,6 +27,8 @@
             <thead>
             <tr>
               <th>Email</th>
+              <th>Name</th>
+              <th>Lastname</th>
               <th>Actions</th>
             </tr>
             </thead>
@@ -35,6 +37,8 @@
             <% @users.each do |user| %>
                 <tr>
                   <td><%= user.email %></td>
+                  <td><%= user.name %></td>
+                  <td><%= user.lastname %></td>
 
                   <td>
                     <%= link_to 'Show', user ,  :class =>"btn btn-primary btn-block btn-xs"%>

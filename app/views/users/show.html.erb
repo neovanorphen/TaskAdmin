@@ -25,6 +25,14 @@
             <strong>User:</strong>
             <%= @user.email %>
           </p>
+          <p>
+            <strong>Name:</strong>
+            <%= @user.name %>
+          </p>
+          <p>
+            <strong>Lastname:</strong>
+            <%= @user.lastname %>
+          </p>
         </div>
         <div class="box-footer">
           <%= link_to 'Edit', edit_user_path(@user) ,:class =>"btn bg-purple margin"%>
