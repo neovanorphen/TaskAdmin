@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "AdminLTE";
+@import "skin-green";
+@import 'ionicons';
+@import "font-awesome";
