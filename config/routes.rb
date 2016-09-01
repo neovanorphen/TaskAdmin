@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
 
-  resources :tickets
+  resources :tickets do
+    member do
+      get 'review'
+      patch 'review_update'
+    end
+  end
 
-  root :to => 'application#home', :as => :home
+  root :to => 'home#index', :as => :home
 
 
   devise_for :users, :controllers => { :registrations => "user/registrations" }
 
   devise_scope :user do
     authenticated :user do
-      root :to => 'application#home'
+      root :to => 'home#index'
     end
 
     unauthenticated do

@@ -5,7 +5,6 @@
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Tickets</li>
   </ol>
 </section>
 
@@ -16,9 +15,7 @@
       <div class="box">
         <div class="box-header">
           <h3 class="box-title">Tickets List</h3>
-          <div class="box-tools">
-            <%= link_to 'New Ticket', new_ticket_path ,:class =>"btn btn-primary btn-xs"%>
-          </div>
+
         </div><!-- /.box-header -->
         <div class="box-body table-responsive" style="overflow-x: inherit">
           <table id="table" class="datatable table table-condensed table-bordered table-hover table-responsive no-wrap">
@@ -28,8 +25,8 @@
               <th>Issue</th>
               <th>Description</th>
               <th>Priority</th>
+              <th>Creation Date</th>
               <th>User</th>
-              <th>Actions</th>
             </tr>
             </thead>
 
@@ -40,12 +37,9 @@
                   <td><%= ticket.issue %></td>
                   <td><%= ticket.description %></td>
                   <td><%= ticket.priority %></td>
+                  <td><%= ticket.created_at %></td>
                   <td><%= User.find(ticket.user_id).name%></td>
-                  <td><%= link_to 'Show', ticket ,  :class =>"btn btn-primary btn-block btn-xs"%>
-                    <%= link_to 'Edit', edit_ticket_path(ticket),:class =>"btn btn-warning btn-block btn-xs" %>
-                    <%= link_to 'Review', review_ticket_url(ticket), :class => 'btn btn-warning btn-sm btn-block' %>
-                    <%= link_to 'Delete', ticket, method: :delete, data: { confirm: 'are you sure?' },:class =>"btn btn-danger btn-block btn-xs" %>
-                  </td>
+
                 </tr>
             <% end %>
             </tbody>

@@ -10,16 +10,14 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :email,:name, :lastname,:admin, :password, :password_confirmation, :remember_me,:created_at) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit( :email,:name, :lastname,:admin, :password, :password_confirmation, :remember_me, :current_password) }
-    devise_parameter_sanitizer.for(:edit_user_path) { |u| u.permit( :email,:name, :lastname,:admin, :password, :password_confirmation, :remember_me, :current_password) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :emai,:name, :lastname,:admin, :password, :password_confirmation, :remember_me,:created_at) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit( :emai,:name, :lastname,:admin, :password, :password_confirmation, :remember_me, :current_password) }
+    devise_parameter_sanitizer.for(:edit_user_path) { |u| u.permit( :emai,:name, :lastname,:admin, :password, :password_confirmation, :remember_me, :current_password) }
 
   end
 
 
-  def home
-    render "static_page/home"
-  end
+
 
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
