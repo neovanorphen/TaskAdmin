@@ -29,6 +29,7 @@
               <th>Email</th>
               <th>Name</th>
               <th>Lastname</th>
+              <th>Type</th>
               <th>Actions</th>
             </tr>
             </thead>
@@ -39,6 +40,13 @@
                   <td><%= user.email %></td>
                   <td><%= user.name %></td>
                   <td><%= user.lastname %></td>
+
+                  <td><% if user.admin%>
+                        <span class="label label-danger">Administrator</span>
+                    <% else %>
+                        <span class="label label-success">Normal User</span>
+                    <% end %>
+                  </td>
 
                   <td style="width: 200px">
                     <div class="btn-group btn-group-xs">
