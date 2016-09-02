@@ -1,6 +1,6 @@
 Ruby version : 2.1.5
 
-Rails version: 4.1.4
+Rails version: 4.1.8
 
 Database creation: This demo runs over SQLite3
 
