@@ -36,10 +36,20 @@
                   <td><%= ticket.id %></td>
                   <td><%= ticket.issue %></td>
                   <td><%= ticket.description %></td>
-                  <td><%= ticket.priority %></td>
-                  <td><%= ticket.created_at %></td>
-                  <td><%= User.find(ticket.user_id).name%></td>
+                  <td><% if ticket.priority=="High"%>
+                        <span class="label label-danger">High</span>
+                      <% elsif  ticket.priority=="Medium"%>
+                          <span class="label label-warning">Medium</span>
 
+                      <% elsif  ticket.priority=="Low"%>
+                          <span class="label label-success">Low</span>
+                      <% else %>
+                        <span class="label label-info">no priority assigned</span>
+                      <% end %>
+                  </td>
+                  <td><%= ticket.created_at %></td>
+                  <% user = User.find(ticket.user_id) %>
+                  <td><%= user.name + " " + user.lastname %></td>
                 </tr>
             <% end %>
             </tbody>

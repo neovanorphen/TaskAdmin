@@ -17,7 +17,7 @@
         <div class="box-header">
           <h3 class="box-title">Tickets List</h3>
           <div class="box-tools">
-            <%= link_to 'New Ticket', new_ticket_path ,:class =>"btn btn-primary btn-xs"%>
+            <%= link_to 'New Ticket', new_ticket_path ,:class =>"btn btn-success btn-sm"%>
           </div>
         </div><!-- /.box-header -->
         <div class="box-body table-responsive" style="overflow-x: inherit">
@@ -39,12 +39,30 @@
                   <td><%= ticket.id %></td>
                   <td><%= ticket.issue %></td>
                   <td><%= ticket.description %></td>
-                  <td><%= ticket.priority %></td>
-                  <td><%= User.find(ticket.user_id).name%></td>
-                  <td><%= link_to 'Show', ticket ,  :class =>"btn btn-primary btn-block btn-xs"%>
-                    <%= link_to 'Edit', edit_ticket_path(ticket),:class =>"btn btn-warning btn-block btn-xs" %>
-                    <%= link_to 'Review', review_ticket_url(ticket), :class => 'btn btn-warning btn-sm btn-block' %>
-                    <%= link_to 'Delete', ticket, method: :delete, data: { confirm: 'are you sure?' },:class =>"btn btn-danger btn-block btn-xs" %>
+                  <td><% if ticket.priority=="High"%>
+                        <span class="label label-danger">High</span>
+                    <% elsif  ticket.priority=="Medium"%>
+                        <span class="label label-warning">Medium</span>
+
+                    <% elsif  ticket.priority=="Low"%>
+                        <span class="label label-success">Low</span>
+                    <% else %>
+                        <span class="label label-info">no priority assigned</span>
+                    <% end %>
+                  </td>
+                  <% user = User.find(ticket.user_id) %>
+                  <td><%= user.name + " " + user.lastname %></td>
+
+                  <td style="width: 200px">
+                    <div class="btn-group btn-group-xs">
+                      <%= link_to 'Show', ticket ,  :class =>"btn btn-primary  btn-xs"%>
+                      <%= link_to 'Edit', edit_ticket_path(ticket),:class =>"btn btn-warning  btn-xs" %>
+
+                      <% if current_user.admin? %>
+                        <%= link_to 'Review', review_ticket_url(ticket), :class => "btn btn-success  btn-xs"%>
+                      <% end %>
+                      <%= link_to 'Delete', ticket, method: :delete, data: { confirm: 'are you sure?' },:class =>"btn btn-danger btn-xs" %>
+                    </div>
                   </td>
                 </tr>
             <% end %>

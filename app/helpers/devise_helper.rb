@@ -1,8 +1,12 @@
-module ApplicationHelper
+module DeviseHelper
 
-  def custom_bootstrap_flash
+  def devise_error_messages!
+    return "" if resource.errors.empty?
     flash_messages = []
 
+    messages = resource.errors.full_messages.map { |msg|  msg + '\n' }.join
+
+    flash = { error: messages }
 
     flash.each do |type, message|
       type = 'success' if type == 'notice'
@@ -14,3 +18,4 @@ module ApplicationHelper
   end
 
 end
+
